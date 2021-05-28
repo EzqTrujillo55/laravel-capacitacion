@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Estudiante; 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,8 +26,14 @@ INSERT INTO table VALUES ()
 UPDATE SQL
 -DELETE => 'Nos permite eliminar un recurso' 
 DELTE SQL
-*/
 
-Route::get('estudiantes', function(){
-    return Estudiante::all(); //SELECT * FROM estudiantes
-});
+EXTRA: La principal diferencia entre GET Y POST,
+es que con POST podemos enviar información mediante un formulario o request
+pero con GET no se puede enviar, solo se puede enviar en la url
+*/
+//BASE URL = http://localhost:8000/api
+Route::get('estudiantes', 'EstudianteController@index');
+Route::post('estudiantes', 'EstudianteController@store');
+Route::get('estudiantes/{id}', 'EstudianteController@show');
+Route::put('estudiantes/{id}', 'EstudianteController@update');
+Route::delete('estudiantes/{id}', 'EstudianteController@delete');
